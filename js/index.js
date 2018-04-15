@@ -1,3 +1,4 @@
+var msg = "Insira um n\xFAmero entre 1 e 99"
 function print (txt){
 	var output = $('x'); // busca por id
 	output.innerHTML += txt;
@@ -41,7 +42,11 @@ function imprimirDiamante1Linha (tamanho, i) {
 	printarEspaco(tamanho - i - 1); 
 	print(i + 1);
 	if (i > 0){
-		printarEspaco(i*2-1);
+		var n = 1;
+		if (i>=9 && i<99) {
+			n = 3;
+		}
+		printarEspaco(i*2-n);
 		print(i + 1);
 	}
 	println("");
@@ -77,14 +82,14 @@ function desenhar (tamanho){
 		//console.log(event, sender);
 		var n = new Number(sender.numero.value);
 		if(n){
-			if(n > 0 && n <10 ){
+			if(n > 0 && n <100 ){
 				clearConsole();
 				desenhar(sender.numero.value);
 			}else{
-				window.alert("Insira um numero entre 1 e 9");
+				window.alert(msg);
 			}
 		}else{
-				window.alert("Insira um numero entre 1 e 9");
+				window.alert(msg);
 		}
 		
 		event.preventDefault();
